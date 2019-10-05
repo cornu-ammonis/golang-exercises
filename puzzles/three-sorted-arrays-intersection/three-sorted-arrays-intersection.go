@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// actually not needed
 func safeIncrement(index int, array []int) int {
 	if index < len(array)-1 {
 		return index + 1
@@ -13,22 +14,23 @@ func arraysIntersection(arr1 []int, arr2 []int, arr3 []int) []int {
 	var iarr1, iarr2, iarr3 int
 	var result []int
 
-	for iarr1 < len(arr1) || iarr2 < len(arr2) || iarr3 < len(arr3) {
+	// we use && because once any index gets past the last element, we can no longer discover
+	// overlapping elements
+	for iarr1 < len(arr1) && iarr2 < len(arr2) && iarr3 < len(arr3) {
 		if arr1[iarr1] == arr2[iarr2] && arr1[iarr1] == arr3[iarr3] {
 			result = append(result, arr1[iarr1])
-			iarr1 = iarr1 + 1
-			iarr2 = iarr2 + 1
-			iarr3 = iarr3 + 1
+			iarr1++
+			iarr2++
+			iarr3++
 		} else if arr1[iarr1] < arr2[iarr2] {
-			iarr1 = iarr1 + 1
+			iarr1++
 		} else if arr1[iarr1] < arr3[iarr3] {
-			iarr1 = iarr1 + 1
+			iarr1++
 		} else if arr2[iarr2] < arr1[iarr1] || arr2[iarr2] < arr3[iarr3] {
-			iarr2 = iarr2 + 1
+			iarr2++
 		} else if arr3[iarr3] < arr1[iarr1] || arr3[iarr3] < arr2[iarr2] {
-			iarr3 = iarr3 + 1
+			iarr3++
 		}
-
 	}
 	return result
 }
