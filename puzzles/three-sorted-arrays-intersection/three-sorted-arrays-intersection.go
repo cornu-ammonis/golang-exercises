@@ -2,6 +2,13 @@ package main
 
 import "fmt"
 
+func safeIncrement(index int, array []int) int {
+	if index < len(array)-1 {
+		return index + 1
+	}
+	return index
+}
+
 func arraysIntersection(arr1 []int, arr2 []int, arr3 []int) []int {
 	var iarr1, iarr2, iarr3 int
 	var result []int
@@ -27,9 +34,12 @@ func arraysIntersection(arr1 []int, arr2 []int, arr3 []int) []int {
 }
 
 func main() {
-	var iarr1 []int = make([]int, 5)
-	iarr1[0] = 1
-	r := arraysIntersection(iarr1, iarr1, iarr1)
+
+	arr1 := []int{2, 3, 5, 7, 11, 13}
+	arr2 := []int{2, 4, 5, 8, 9, 13}
+	arr3 := []int{2, 3, 4, 5, 7, 11, 13}
+
+	r := arraysIntersection(arr1, arr2, arr3)
 
 	fmt.Printf("%v", r)
 }
