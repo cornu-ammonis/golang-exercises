@@ -17,6 +17,8 @@ func safeIncrementPointer(index *int, array []int) {
 	}
 }
 
+// actual puzzle solution. exercise taken from
+// https://leetcode.com/problems/intersection-of-three-sorted-arrays/
 func arraysIntersection(arr1 []int, arr2 []int, arr3 []int) []int {
 	var iarr1, iarr2, iarr3 int
 	var result []int
@@ -43,14 +45,16 @@ func arraysIntersection(arr1 []int, arr2 []int, arr3 []int) []int {
 
 func main() {
 
+	// arrays for testing solution
 	arr1 := []int{2, 3, 5, 7, 11, 13}
 	arr2 := []int{2, 4, 5, 8, 9, 13}
 	arr3 := []int{2, 3, 4, 5, 7, 11, 13}
 
+	// test solution
 	r := arraysIntersection(arr1, arr2, arr3)
-
 	fmt.Printf("%v", r)
 
+	// unrelated tests of helper functions
 	var i int = 4
 	var arr []int = make([]int, 8)
 	fmt.Println(i)
