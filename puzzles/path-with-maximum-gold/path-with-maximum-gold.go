@@ -8,7 +8,7 @@ type opt struct {
 }
 
 func options(row int, col int, grid [][]int) []opt {
-	var opts []opt = make([]opt, 4)
+	var opts []opt = make([]opt, 0)
 
 	if row+1 < len(grid) {
 		opts = append(opts, opt{row + 1, col})
