@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type opt struct {
 	row int
 	col int
@@ -67,5 +69,9 @@ func getMaximumGold(grid [][]int) int {
 }
 
 func main() {
+	var test1 [][]int = [][]int{{0, 6, 0}, {5, 8, 7}, {0, 9, 0}}
+	fmt.Println("running first test, expect 24...")
+	res1 := getMaximumGold(test1)
+	fmt.Println(res1) // expect 24
 
 }
