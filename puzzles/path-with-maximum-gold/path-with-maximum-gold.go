@@ -74,4 +74,8 @@ func main() {
 	res1 := getMaximumGold(test1)
 	fmt.Println(res1) // expect 24
 
+	test2 := [][]int{{1, 0, 7}, {2, 0, 6}, {3, 4, 5}, {0, 3, 0}, {9, 0, 20}}
+	fmt.Println("running second test, expect 28...")
+	res2 := getMaximumGold(test2)
+	fmt.Println(res2)
 }
