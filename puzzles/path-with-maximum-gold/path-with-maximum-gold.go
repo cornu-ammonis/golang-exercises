@@ -8,6 +8,7 @@ type opt struct {
 }
 
 func options(row int, col int, grid [][]int) []opt {
+	// must set len 0 not 4, else if a condition is false, opt{0, 0} will mistakenly appear as valid
 	var opts []opt = make([]opt, 0)
 
 	if row+1 < len(grid) {
