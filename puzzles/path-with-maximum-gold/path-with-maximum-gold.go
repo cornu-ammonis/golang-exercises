@@ -5,8 +5,26 @@ type opt struct {
 	col int
 }
 
-func options(row int, column int, grid [][]int) []opt {
+func options(row int, col int, grid [][]int) []opt {
+	var opts []opt = make([]opt, 4)
 
+	if row+1 < len(grid) {
+		opts = append(opts, opt{row + 1, col})
+	}
+
+	if col+1 < len(grid[row]) {
+		opts = append(opts, opt{row, col + 1})
+	}
+
+	if row > 0 {
+		opts = append(opts, opt{row - 1, col})
+	}
+
+	if col > 0 {
+		opts = append(opts, opt{row, col - 1})
+	}
+
+	return opts
 }
 
 func backtrack(row int, col int, grid [][]int, currentGold *int, maxGold *int) {
