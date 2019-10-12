@@ -42,6 +42,8 @@ func consumer(ch <-chan *Tweet, wg *sync.WaitGroup) {
 func main() {
 	start := time.Now()
 	stream := GetMockStream()
+
+	// buffer would not help because producer takes longer than consumer
 	ch := make(chan *Tweet)
 
 	var wg sync.WaitGroup
