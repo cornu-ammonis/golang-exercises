@@ -13,12 +13,31 @@ func buildBoard(queens [][]int) [8][8]int {
 // traversing the up-right diagonal would be represented by dy = 1, dx = 1
 //
 // returns the queen's coordinates, if found, and a flag representing whether we found a queen
-func traverseDirection(board [8][8]int, kingX, kingY, dx, dy int) (pos []int, found bool) {
+func traverseDirection(board [8][8]int, kingX, kingY, dx, dy int) (coords []int, found bool) {
 
 }
 
 func queensAttacktheKing(queens [][]int, king []int) [][]int {
+	res := make([][]int, 0)
+	board := buildBoard(queens)
+	kingX := king[0]
+	kingY := king[1]
 
+	for dy := 0; dy <= 1; dy++ {
+		for dx := 0; dx <= 1; dx++ {
+			// this would represent no movement, so we skip it
+			if dy == 0 && dx == 0 {
+				continue
+			}
+
+			coords, found := traverseDirection(board, kingX, kingY, dx, dy)
+			if found {
+				res = append(res, coords)
+			}
+		}
+	}
+
+	return res
 }
 
 func main() {
