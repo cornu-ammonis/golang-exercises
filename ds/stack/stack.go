@@ -11,3 +11,12 @@ func (s ByteStack) Pop() (ByteStack, byte) {
 
 	return s[:l-1], s[l-1]
 }
+
+func (s ByteStack) ToString() string {
+	str := ""
+	for _, c := range s {
+		str = str + string(c)
+	}
+
+	return str
+}
