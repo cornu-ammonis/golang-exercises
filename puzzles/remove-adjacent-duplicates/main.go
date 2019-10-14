@@ -66,3 +66,72 @@ func main() {
 	fmt.Println(removeDuplicates(test2, k2)) // expect "aa"
 	fmt.Println(removeDuplicates(test3, k3)) // expect "ps"
 }
+
+/*
+OLD SOLUTION. not O(n)
+
+type ByteStack []byte
+
+func (s ByteStack) Push(v byte) ByteStack {
+	return append(s, v)
+}
+
+func (s ByteStack) Pop() (ByteStack, byte) {
+	l := len(s)
+
+	return s[:l-1], s[l-1]
+}
+
+func (s ByteStack) ToString() string {
+	str := ""
+	for _, c := range s {
+		str = str + string(c)
+	}
+
+	return str
+}
+
+func removeKFromStack(stk ByteStack, k int) ByteStack {
+	for i := 0; i < k; i = i + 1 {
+		stk, _ = stk.Pop()
+	}
+
+	return stk
+}
+
+func singlePassRemove(s string, k int) string {
+	prev := byte(0)
+	sameCount := 0 // starts at 0 because we have 0 same char in a row
+	stk := make(ByteStack, 0)
+	for i, _ := range s {
+		var c byte = s[i]
+		stk = stk.Push(c)
+
+		if c == prev {
+			sameCount = sameCount + 1
+			if sameCount == k {
+				stk = removeKFromStack(stk, k)
+			}
+		} else {
+			sameCount = 1 // starts at one here because we have 1 same char in a row
+			prev = c
+		}
+	}
+
+	return stk.ToString()
+}
+
+func removeDuplicates(s string, k int) string {
+	var prevLen int = 0
+	var currentLen int = len(s)
+
+	for prevLen != currentLen {
+		prevLen = currentLen
+
+		s = singlePassRemove(s, k)
+		currentLen = len(s)
+	}
+
+	return s
+}
+*/
