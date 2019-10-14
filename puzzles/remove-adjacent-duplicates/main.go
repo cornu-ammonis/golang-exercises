@@ -16,7 +16,7 @@ func removeKFromStack(stk stack.ByteStack, k int) stack.ByteStack {
 
 func singlePassRemove(s string, k int) string {
 	prev := byte(0)
-	sameCount := 0
+	sameCount := 0 // starts at 0 because we have 0 same char in a row
 	stk := make(stack.ByteStack, 0)
 	for i, _ := range s {
 		var c byte = s[i]
@@ -28,7 +28,7 @@ func singlePassRemove(s string, k int) string {
 				stk = removeKFromStack(stk, k)
 			}
 		} else {
-			sameCount = 0
+			sameCount = 1 // starts at one here because we have 1 same char in a row
 			prev = c
 		}
 	}
@@ -53,6 +53,7 @@ func removeDuplicates(s string, k int) string {
 func main() {
 	test1 := "abcd"
 	k1 := 2
+
 	test2 := "deeedbbcccbdaa"
 	k2 := 3
 
