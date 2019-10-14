@@ -7,7 +7,11 @@ import (
 )
 
 func removeKFromStack(stk stack.ByteStack, k int) stack.ByteStack {
+	for i := 0; i < k; i = i + 1 {
+		stk, _ = stk.Pop()
+	}
 
+	return stk
 }
 
 func singlePassRemove(s string, k int) string {
@@ -28,6 +32,8 @@ func singlePassRemove(s string, k int) string {
 			prev = c
 		}
 	}
+
+	return stk.toString()
 }
 
 func removeDuplicates(s string, k int) string {
@@ -38,7 +44,10 @@ func removeDuplicates(s string, k int) string {
 		prevLen = currentLen
 
 		s = singlePassRemove(s, k)
+		currentLen = len(s)
 	}
+
+	return s
 }
 
 func main() {
