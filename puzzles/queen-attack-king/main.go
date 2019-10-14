@@ -3,7 +3,7 @@ package main
 
 import "fmt"
 
-func buildBoard(queens [][]int) [8][8]int {
+func buildBoard(queens [][]int) [8][8]bool {
 
 }
 
@@ -13,8 +13,18 @@ func buildBoard(queens [][]int) [8][8]int {
 // traversing the up-right diagonal would be represented by dy = 1, dx = 1
 //
 // returns the queen's coordinates, if found, and a flag representing whether we found a queen
-func traverseDirection(board [8][8]int, kingX, kingY, dx, dy int) (coords []int, found bool) {
+func traverseDirection(board [8][8]bool, kingX, kingY, dx, dy int) (coords []int, found bool) {
 
+	for x, y := kingX, kingY; x+dx < 8 && y+dy < 8; {
+		x = x + dx
+		y = y + dy
+
+		if board[x][y] {
+			return []int{x, y}, true
+		}
+	}
+
+	return []int{}, false
 }
 
 func queensAttacktheKing(queens [][]int, king []int) [][]int {
