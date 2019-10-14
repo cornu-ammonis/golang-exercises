@@ -1,3 +1,5 @@
+// exercise taken from https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
+
 package main
 
 import (
@@ -57,6 +59,10 @@ func main() {
 	test2 := "deeedbbcccbdaa"
 	k2 := 3
 
-	fmt.Println(removeDuplicates(test1, k1))
-	fmt.Println(removeDuplicates(test2, k2))
+	test3 := "pbbcggttciiippooaais"
+	k3 := 2
+
+	fmt.Println(removeDuplicates(test1, k1)) // expect "abcd"
+	fmt.Println(removeDuplicates(test2, k2)) // expect "aa"
+	fmt.Println(removeDuplicates(test3, k3)) // expect "ps"
 }
