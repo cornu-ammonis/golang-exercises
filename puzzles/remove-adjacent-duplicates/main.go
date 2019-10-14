@@ -44,7 +44,7 @@ func removeDuplicates(s string, k int) string {
 
 	}
 
-	res := make([]byte, len(stack))
+	res := make([]byte, 0)
 
 	for i := 0; i < len(stack); i++ {
 		res = append(res, stack[i].char)
