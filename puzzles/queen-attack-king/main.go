@@ -4,6 +4,13 @@ package main
 import "fmt"
 
 func buildBoard(queens [][]int) [8][8]bool {
+	board := [8][8]bool{}
+
+	for _, v := range queens {
+		board[v[0]][v[1]] = true
+	}
+
+	return board
 
 }
 
