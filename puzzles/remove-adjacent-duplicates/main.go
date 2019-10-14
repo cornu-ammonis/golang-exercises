@@ -33,7 +33,7 @@ func singlePassRemove(s string, k int) string {
 		}
 	}
 
-	return stk.toString()
+	return stk.ToString()
 }
 
 func removeDuplicates(s string, k int) string {
@@ -51,7 +51,11 @@ func removeDuplicates(s string, k int) string {
 }
 
 func main() {
-	s := make(stack.ByteStack, 0)
-	s = s.Push('a')
-	fmt.Println(s)
+	test1 := "abcd"
+	k1 := 2
+	test2 := "deeedbbcccbdaa"
+	k2 := 3
+
+	fmt.Println(removeDuplicates(test1, k1))
+	fmt.Println(removeDuplicates(test2, k2))
 }
