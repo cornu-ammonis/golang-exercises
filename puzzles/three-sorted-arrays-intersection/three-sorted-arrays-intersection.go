@@ -65,4 +65,5 @@ func main() {
 		safeIncrementPointer(&i, arr)
 	}
 	fmt.Println(i)
+	return a
 }
