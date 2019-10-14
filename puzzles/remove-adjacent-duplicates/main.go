@@ -11,6 +11,9 @@ type ch struct {
 	count int
 }
 
+// solution is O(n) and benchmarks at 0ms runtime and 5.8 MB memory usage
+// my first attempt solution, found commented at the bottom of the file
+// benchmarked at 236ms and 8mb memory
 func removeDuplicates(s string, k int) string {
 	stack := make([]ch, 0)
 	firstCh := ch{char: s[0], count: 1}
