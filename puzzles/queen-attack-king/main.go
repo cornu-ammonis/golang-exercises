@@ -11,7 +11,6 @@ func buildBoard(queens [][]int) [8][8]bool {
 	}
 
 	return board
-
 }
 
 // dy and dx represent the 'direction of travel' for x and y. for example,
@@ -22,9 +21,16 @@ func buildBoard(queens [][]int) [8][8]bool {
 // returns the queen's coordinates, if found, and a flag representing whether we found a queen
 func traverseDirection(board [8][8]bool, kingX, kingY, dx, dy int) (coords []int, found bool) {
 
-	for x, y := kingX, kingY; x+dx < 8 && y+dy < 8; {
-		x = x + dx
-		y = y + dy
+	x := kingX
+	y := kingY
+	nextX := kingX + dx
+	nextY := kingY + dy
+
+	for nextX >= 0 && nextX < 8 && nextY >= 0 && nextY < 8 {
+		x = nextX
+		y = nextY
+		nextX = x + dx
+		nextY = y + dy
 
 		if board[x][y] {
 			return []int{x, y}, true
@@ -40,8 +46,8 @@ func queensAttacktheKing(queens [][]int, king []int) [][]int {
 	kingX := king[0]
 	kingY := king[1]
 
-	for dy := 0; dy <= 1; dy++ {
-		for dx := 0; dx <= 1; dx++ {
+	for dy := -1; dy <= 1; dy++ {
+		for dx := -1; dx <= 1; dx++ {
 			// this would represent no movement, so we skip it
 			if dy == 0 && dx == 0 {
 				continue
