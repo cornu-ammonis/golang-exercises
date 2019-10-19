@@ -32,6 +32,14 @@ func minEnd(slot1 []int, slot2 []int) int {
 	return end(minEndSlot(slot1, slot2))
 }
 
+func incrementMinEndIndex(slot1 []int, slot2 []int, i *int, j *int) {
+	if slot1[1] < slot2[1] {
+		*i = *i + 1
+	} else {
+		*j = *j + 1
+	}
+}
+
 //https://leetcode.com/problems/meeting-scheduler/
 func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
 	res := make([]int, 2)
@@ -41,7 +49,14 @@ func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
 		slot1 := slots1[i]
 		slot2 := slots2[j]
 
+		if (minEnd(slot1, slot2) - maxStart(slot1, slot2)) >= duration {
+			return []int{maxStart(slot1, slot2), maxStart(slot1, slot2) + duration}
+		}
+
+		incrementMinEndIndex(slot1, slot2, &i, &j)
 	}
+
+	return res
 }
 
 func main() {
