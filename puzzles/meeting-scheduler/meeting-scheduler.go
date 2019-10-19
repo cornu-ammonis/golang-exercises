@@ -61,4 +61,10 @@ func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
 
 func main() {
 	fmt.Println("hi")
+
+	test1 := [][]int{{10, 50}, {60, 120}, {140, 210}}
+	test2 := [][]int{{10, 15}, {60, 70}}
+	duration1 := 8
+
+	fmt.Println(minAvailableDuration(test1, test2, duration1))
 }
