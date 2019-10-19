@@ -42,7 +42,7 @@ func incrementMinEndIndex(slot1 []int, slot2 []int, i *int, j *int) {
 
 //https://leetcode.com/problems/meeting-scheduler/
 func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
-	res := make([]int, 2)
+	res := make([]int, 0)
 	i, j := 0, 0
 
 	for i < len(slots1) && j < len(slots2) {
