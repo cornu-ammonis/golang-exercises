@@ -35,6 +35,8 @@ func incrementMinEndIndex(slot1 []int, slot2 []int, i *int, j *int) {
 	}
 }
 
+// Slots are guaranteed not to overlap, so sorting based on the first element
+// (i.e. the start time) will correctly sort the timeslots.
 func sortSlots(slots [][]int) {
 	sort.Slice(slots, func(i, j int) bool {
 		return slots[i][0] < slots[j][0]
@@ -55,12 +57,12 @@ func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
 
 		// minEnd - maxStart is equivalent to the maximum overlap of the timeslots
 		if (minEnd(slot1, slot2) - maxStart(slot1, slot2)) >= duration {
-			// don't use maximum overlap. maxStart + duration == earliest end time.
+			// Don't use maximum overlap. maxStart + duration == earliest end time.
 			return []int{maxStart(slot1, slot2), maxStart(slot1, slot2) + duration}
 		}
 
-		// not a valid intersection, so we choose which timeslot to increment
-		// based on the earliest end time. choosing earliest end time preserves any
+		// Not a valid intersection, so we choose which timeslot to increment
+		// based on the earliest end time. Choosing earliest end time preserves any
 		// possible overlap between the next timeslot and one of the existing timeslots.
 		incrementMinEndIndex(slot1, slot2, &i, &j)
 	}
