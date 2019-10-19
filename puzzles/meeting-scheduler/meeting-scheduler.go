@@ -13,30 +13,22 @@ func end(slot []int) int {
 	return slot[1]
 }
 
-func maxStartSlot(slot1 []int, slot2 []int) []int {
-	if slot1[0] > slot2[0] {
-		return slot1
-	}
-	return slot2
-}
-
 func maxStart(slot1 []int, slot2 []int) int {
-	return start(maxStartSlot(slot1, slot2))
-}
-
-func minEndSlot(slot1 []int, slot2 []int) []int {
-	if slot1[1] < slot2[1] {
-		return slot1
+	if start(slot1) > start(slot2) {
+		return start(slot1)
 	}
-	return slot2
+	return start(slot2)
 }
 
 func minEnd(slot1 []int, slot2 []int) int {
-	return end(minEndSlot(slot1, slot2))
+	if end(slot1) < end(slot2) {
+		return end(slot1)
+	}
+	return end(slot2)
 }
 
 func incrementMinEndIndex(slot1 []int, slot2 []int, i *int, j *int) {
-	if slot1[1] < slot2[1] {
+	if end(slot1) < end(slot2) {
 		*i = *i + 1
 	} else {
 		*j = *j + 1
@@ -53,6 +45,7 @@ func sortSlots(slots [][]int) {
 func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
 	sortSlots(slots1)
 	sortSlots(slots2)
+
 	res := make([]int, 0)
 	i, j := 0, 0
 
