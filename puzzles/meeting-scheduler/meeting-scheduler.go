@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func start(slot []int) int {
 	return slot[0]
@@ -40,8 +43,16 @@ func incrementMinEndIndex(slot1 []int, slot2 []int, i *int, j *int) {
 	}
 }
 
+func sortSlots(slots [][]int) {
+	sort.Slice(slots, func(i, j int) bool {
+		return slots[i][0] < slots[j][0]
+	})
+}
+
 //https://leetcode.com/problems/meeting-scheduler/
 func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
+	sortSlots(slots1)
+	sortSlots(slots2)
 	res := make([]int, 0)
 	i, j := 0, 0
 
@@ -65,6 +76,11 @@ func main() {
 	test1 := [][]int{{10, 50}, {60, 120}, {140, 210}}
 	test2 := [][]int{{10, 15}, {60, 70}}
 	duration1 := 8
+
+	unsortedTest := [][]int{{60, 120}, {10, 50}, {140, 210}}
+	fmt.Println(unsortedTest)
+	sortSlots(unsortedTest)
+	fmt.Println(unsortedTest)
 
 	fmt.Println(minAvailableDuration(test1, test2, duration1))
 }
