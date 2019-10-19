@@ -46,21 +46,26 @@ func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
 	sortSlots(slots1)
 	sortSlots(slots2)
 
-	res := make([]int, 0)
+	empty := make([]int, 0)
 	i, j := 0, 0
 
 	for i < len(slots1) && j < len(slots2) {
 		slot1 := slots1[i]
 		slot2 := slots2[j]
 
+		// minEnd - maxStart is equivalent to the maximum overlap of the timeslots
 		if (minEnd(slot1, slot2) - maxStart(slot1, slot2)) >= duration {
+			// don't use maximum overlap. maxStart + duration == earliest end time.
 			return []int{maxStart(slot1, slot2), maxStart(slot1, slot2) + duration}
 		}
 
+		// not a valid intersection, so we choose which timeslot to increment
+		// based on the earliest end time. choosing earliest end time preserves any
+		// possible overlap between the next timeslot and one of the existing timeslots.
 		incrementMinEndIndex(slot1, slot2, &i, &j)
 	}
 
-	return res
+	return empty
 }
 
 func main() {
