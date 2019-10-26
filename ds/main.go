@@ -3,11 +3,10 @@ package main
 import (
 	"fmt"
 
-	"../ds/stack"
+	"./stack"
 )
 
 func main() {
-	fmt.Printf("hello, world\n")
 
 	s := make(stack.ByteStack, 0)
 	s = s.Push(1)
