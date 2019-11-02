@@ -43,7 +43,7 @@ func sortSlots(slots [][]int) {
 	})
 }
 
-//https://leetcode.com/problems/meeting-scheduler/
+// https://leetcode.com/problems/meeting-scheduler/
 func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
 	sortSlots(slots1)
 	sortSlots(slots2)
@@ -56,6 +56,7 @@ func minAvailableDuration(slots1 [][]int, slots2 [][]int, duration int) []int {
 		slot2 := slots2[j]
 
 		// minEnd - maxStart is equivalent to the maximum overlap of the timeslots
+		// if that is greater than the duration, we have found the earliest valid timeslot
 		if (minEnd(slot1, slot2) - maxStart(slot1, slot2)) >= duration {
 			// Don't use maximum overlap. maxStart + duration == earliest end time.
 			return []int{maxStart(slot1, slot2), maxStart(slot1, slot2) + duration}
