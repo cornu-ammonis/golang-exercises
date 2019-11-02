@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// puzzle from https://leetcode.com/problems/split-a-string-in-balanced-strings/
 func balancedStringSplit(s string) int {
 	var lCount int = 0
 	var rCount int = 0
@@ -14,6 +15,9 @@ func balancedStringSplit(s string) int {
 			rCount++
 		}
 
+		// idea of the algorithm is that if we reach a point where we have seen an equal
+		// number of Ls and Rs since the last split, then we have reached the earliest possible valid split
+		// for this part of the string
 		if lCount == rCount {
 			balancedCount++
 			lCount = 0
