@@ -23,7 +23,7 @@ func paddingLeft(indices []int, i int) int {
 }
 
 func isOdd(n int) bool {
-
+	return n%2 == 1
 }
 
 func numberOfSubarrays(nums []int, k int) int {
