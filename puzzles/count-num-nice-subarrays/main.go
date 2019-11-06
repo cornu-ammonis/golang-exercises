@@ -20,6 +20,13 @@ Explanation: The only sub-arrays with 3 odd numbers are [1,1,2,1] and [1,2,1,1].
 // odd number to the left
 func paddingLeft(indices []int, i int) int {
 
+	// case where this is the first index, so rather than comparing distance to next odd to the left
+	// (which DNE), compare to start of nums array, equivalent to the index itself indices[i]
+	if i == 0 {
+		return indices[i]
+	}
+
+	return indices[i] - (1 + indices[i-1])
 }
 
 func isOdd(n int) bool {
