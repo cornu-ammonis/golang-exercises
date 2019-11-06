@@ -15,6 +15,8 @@ Explanation: The only sub-arrays with 3 odd numbers are [1,1,2,1] and [1,2,1,1].
 
 */
 
+import "fmt"
+
 // i is the index on indices. padding left is the space between
 // the nums index at indices[i] and either the beginning of the nums array, or the next
 // odd number to the left
@@ -60,5 +62,9 @@ func numberOfSubarrays(nums []int, k int) int {
 }
 
 func main() {
+	nums1 := []int{1, 1, 2, 1, 1}
+	k1 := 3
+
+	fmt.Println(numberOfSubarrays(nums1, k1)) // expect 2
 
 }
