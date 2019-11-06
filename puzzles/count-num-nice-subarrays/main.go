@@ -64,7 +64,10 @@ func numberOfSubarrays(nums []int, k int) int {
 func main() {
 	nums1 := []int{1, 1, 2, 1, 1}
 	k1 := 3
-
 	fmt.Println(numberOfSubarrays(nums1, k1)) // expect 2
+
+	nums2 := []int{2, 2, 2, 1, 2, 2, 1, 2, 2, 2}
+	k2 := 2
+	fmt.Println(numberOfSubarrays(nums2, k2)) // expect 16
 
 }
