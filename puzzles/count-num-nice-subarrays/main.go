@@ -41,7 +41,7 @@ func numberOfSubarrays(nums []int, k int) int {
 	var count int = 0
 	var oddCount int = 0
 
-	for n, i := range nums {
+	for i, n := range nums {
 		if isOdd(n) {
 			oddIndices = append(oddIndices, i)
 			oddCount++
