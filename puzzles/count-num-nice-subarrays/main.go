@@ -15,19 +15,41 @@ Explanation: The only sub-arrays with 3 odd numbers are [1,1,2,1] and [1,2,1,1].
 
 */
 
-// i is the index on oddIndices. padding left is the space between
-// the oddIndex at i and either the beginning of the nums array, or the next
+// i is the index on indices. padding left is the space between
+// the nums index at indices[i] and either the beginning of the nums array, or the next
 // odd number to the left
-func paddingLeft(oddIndices []int, i int) {
+func paddingLeft(indices []int, i int) int {
 
 }
 
-func isOdd(n int) int {
+func isOdd(n int) bool {
 
 }
 
 func numberOfSubarrays(nums []int, k int) int {
+	oddIndices := make([]int, 0)
+	var leftmostOdd int = 0
+	var count int = 0
+	var oddCount int = 0
 
+	for n, i := range nums {
+		if isOdd(n) {
+			oddIndices = append(oddIndices, i)
+			oddCount++
+
+			if oddCount > k {
+				leftmostOdd++
+				oddCount--
+			}
+
+		}
+
+		if oddCount == k {
+			count = count + 1 + paddingLeft(oddIndices, leftmostOdd)
+		}
+	}
+
+	return count
 }
 
 func main() {
