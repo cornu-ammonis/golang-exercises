@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
 	taken from https://leetcode.com/problems/cells-with-odd-values-in-a-matrix/
 	Given n and m which are the dimensions of a matrix initialized by zeros and given an
@@ -35,4 +37,13 @@ func oddCells(n int, m int, indices [][]int) int {
 
 func isOdd(n int) bool {
 	return n%2 == 1
+}
+
+func main() {
+	n1 := 2
+	m1 := 3
+	indices1 := [][]int{{0, 1}, {1, 1}}
+
+	fmt.Println(oddCells(n1, m1, indices1)) // expects 6
+
 }
