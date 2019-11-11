@@ -43,7 +43,11 @@ func main() {
 	n1 := 2
 	m1 := 3
 	indices1 := [][]int{{0, 1}, {1, 1}}
-
 	fmt.Println(oddCells(n1, m1, indices1)) // expects 6
+
+	n2 := 2
+	m2 := 2
+	indices2 := [][]int{{1, 1}, {0, 0}}
+	fmt.Println(oddCells(n2, m2, indices2)) // expects 0
 
 }
