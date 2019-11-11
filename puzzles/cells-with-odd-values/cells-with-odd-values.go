@@ -22,6 +22,15 @@ func oddCells(n int, m int, indices [][]int) int {
 		cols[ci]++
 	}
 
+	for _, row := range rows {
+		for _, col := range cols {
+			if isOdd(row + col) {
+				result++
+			}
+		}
+	}
+
+	return result
 }
 
 func isOdd(n int) bool {
