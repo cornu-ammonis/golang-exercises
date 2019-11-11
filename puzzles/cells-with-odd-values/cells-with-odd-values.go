@@ -10,5 +10,14 @@ package main
 */
 
 func oddCells(n int, m int, indices [][]int) int {
+	var rows []int = make([]int, n)
+	var cols []int = make([]int, m)
 
+	for _, entry := range indices {
+		var ri int = entry[0]
+		var ci int = entry[1]
+
+		rows[ri]++
+		cols[ci]++
+	}
 }
