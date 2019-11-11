@@ -12,6 +12,7 @@ package main
 func oddCells(n int, m int, indices [][]int) int {
 	var rows []int = make([]int, n)
 	var cols []int = make([]int, m)
+	var result int = 0
 
 	for _, entry := range indices {
 		var ri int = entry[0]
@@ -20,4 +21,9 @@ func oddCells(n int, m int, indices [][]int) int {
 		rows[ri]++
 		cols[ci]++
 	}
+
+}
+
+func isOdd(n int) bool {
+	return n%2 == 1
 }
