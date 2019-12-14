@@ -31,6 +31,11 @@ func searchForStart(intervals [][]int, interval []int) int {
 	return m
 }
 
+// tests whether potential covers target
+func covers(target []int, potential []int) bool {
+	return potential[0] <= target[0] && target[1] <= potential[1]
+}
+
 // https://leetcode.com/problems/remove-covered-intervals/
 // Given a list of intervals, remove all intervals that are covered by another interval in the list.
 // Interval [a,b) is covered by interval [c,d) if and only if c <= a and b <= d.
@@ -66,7 +71,7 @@ func removeCoveredIntervals(intervals [][]int) int {
 
 	}
 
-	return 0
+	return removedCount
 }
 
 func main() {
