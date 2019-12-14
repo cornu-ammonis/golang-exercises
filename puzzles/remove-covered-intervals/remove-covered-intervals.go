@@ -22,6 +22,29 @@ func removeCoveredIntervals(intervals [][]int) int {
 	fmt.Println(intervals)
 	intervals = remove(intervals, 1)
 	fmt.Println(intervals)
+
+	i := 0
+	removedCount := 0
+	for i < len(intervals) {
+		interval := intervals[i]
+		candidateIndex := searchForStart(intervals, interval)
+		removed := false
+
+		for candidateIndex >= 0 {
+			if covers(interval, intervals[candidateIndex]) {
+				intervals = remove(intervals, i)
+				removed = true
+				removedCount++
+				break
+			}
+		}
+
+		if !removed {
+			i = i + 1
+		}
+
+	}
+
 	return 0
 }
 
