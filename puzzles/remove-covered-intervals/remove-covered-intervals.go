@@ -53,12 +53,21 @@ func removeCoveredIntervals(intervals [][]int) int {
 		removed := false
 
 		for candidateIndex >= 0 {
+
+			// an interval cannot cover itself
+			if candidateIndex == i {
+				candidateIndex--
+				continue
+			}
+
 			if covers(interval, intervals[candidateIndex]) {
 				intervals = remove(intervals, i)
 				removed = true
 				removedCount++
 				break
 			}
+
+			candidateIndex--
 		}
 
 		if !removed {
@@ -66,6 +75,7 @@ func removeCoveredIntervals(intervals [][]int) int {
 		}
 
 	}
+	fmt.Println(intervals)
 
 	return removedCount
 }
