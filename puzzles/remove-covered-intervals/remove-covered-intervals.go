@@ -10,6 +10,27 @@ func remove(slice [][]int, s int) [][]int {
 	return append(slice[:s], slice[s+1:]...)
 }
 
+func searchForStart(intervals [][]int, interval []int) int {
+	target := interval[0]
+
+	L := 0
+	R := len(interval) - 1
+	var m int
+	for L <= R {
+		m = (L + R) / 2
+
+		if intervals[m][0] < target {
+			L = m + 1
+		} else if target < intervals[m][0] {
+			R = m - 1
+		} else {
+			return m
+		}
+	}
+
+	return m
+}
+
 // https://leetcode.com/problems/remove-covered-intervals/
 // Given a list of intervals, remove all intervals that are covered by another interval in the list.
 // Interval [a,b) is covered by interval [c,d) if and only if c <= a and b <= d.
