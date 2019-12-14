@@ -45,10 +45,6 @@ func removeCoveredIntervals(intervals [][]int) int {
 	// sort the slice based on first element for now
 	sort.Slice(intervals, func(i, j int) bool { return intervals[i][0] < intervals[j][0] })
 
-	fmt.Println(intervals)
-	intervals = remove(intervals, 1)
-	fmt.Println(intervals)
-
 	i := 0
 	removedCount := 0
 	for i < len(intervals) {
