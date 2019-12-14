@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 // https://leetcode.com/problems/remove-covered-intervals/
 // Given a list of intervals, remove all intervals that are covered by another interval in the list.
@@ -8,6 +11,11 @@ import "fmt"
 // After doing so, return the number of remaining intervals.
 func removeCoveredIntervals(intervals [][]int) int {
 
+	// sort the slice based on first element for now
+	sort.Slice(intervals, func(i, j int) bool { return intervals[i][0] < intervals[j][0] })
+
+	fmt.Println(intervals)
+	return 0
 }
 
 func main() {
