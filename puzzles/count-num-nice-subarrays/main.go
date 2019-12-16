@@ -20,6 +20,13 @@ import "fmt"
 // i is the index on indices. padding left is the space between
 // the nums index at indices[i] and either the beginning of the nums array, or the next
 // odd number to the left
+//
+// the reason paddingLeft matters is that if you find a minimum subarray with the correct number of odd numbers.
+// paddingLeft represents the number of *additional* subarrays with the correct number of odd numbers
+// you can derive by simply expanding the subarray to the left. e.g. with the array
+// [2, 2, 2, 1, 1, 1], k = 3
+// the minimum valid subarrayy is [1, 1, 1] -- but you can add the twos to the left
+// without changing the number of odds. e.g. [2, 1, 1, 1] and [2, 2, 1, 1, 1] are also valid.
 func paddingLeft(indices []int, i int) int {
 
 	// case where this is the first index, so rather than comparing distance to next odd to the left
