@@ -25,10 +25,15 @@ func removeCoveredIntervals(intervals [][]int) int {
 	// larger intervals to come first, such that if an element covers another element
 	// the one that does the covering is always to the left
 	sort.Slice(intervals, func(i, j int) bool {
+
+		// if the open end of the interval is equal, sort such that LARGER closing ends of the
+		// interval come first
 		if intervals[i][0] == intervals[j][0] {
 			return intervals[i][1] > intervals[j][1]
 		}
 
+		// if the opening end of the interval is not equal, sort such that SMALLER opening ends
+		// of the interval come first
 		return intervals[i][0] < intervals[j][0]
 	})
 
