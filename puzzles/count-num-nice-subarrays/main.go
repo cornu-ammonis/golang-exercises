@@ -35,6 +35,7 @@ func paddingLeft(indices []int, i int) int {
 		return indices[i]
 	}
 
+	// distance between this odd number and the previous odd number
 	return indices[i] - (1 + indices[i-1])
 }
 
@@ -53,6 +54,7 @@ func numberOfSubarrays(nums []int, k int) int {
 			oddIndices = append(oddIndices, i)
 			oddCount++
 
+			// here we effectively remove the leftmost oddnumber once we exceed the desired number of odds
 			if oddCount > k {
 				leftmostOdd++
 				oddCount--
@@ -61,6 +63,9 @@ func numberOfSubarrays(nums []int, k int) int {
 		}
 
 		if oddCount == k {
+			// the 1 represents the minum subarray we just found. and paddingLeft represents the
+			// trivial expansions of that subarray -- if any -- which we can make by simply
+			// adding numbers to the left of the minimum subarray until we hit an odd number
 			count = count + 1 + paddingLeft(oddIndices, leftmostOdd)
 		}
 	}
