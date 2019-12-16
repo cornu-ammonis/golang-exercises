@@ -21,8 +21,16 @@ func covers(target []int, potential []int) bool {
 // After doing so, return the number of remaining intervals.
 func removeCoveredIntervals(intervals [][]int) int {
 
-	// sort the slice based on first element for now
-	sort.Slice(intervals, func(i, j int) bool { return intervals[i][0] < intervals[j][0] })
+	// sort the slice based on first element -- if its a tie, we want
+	// larger intervals to come first, such that if an element covers another element
+	// the one that does the covering is always to the left
+	sort.Slice(intervals, func(i, j int) bool {
+		if intervals[i][0] == intervals[j][0] {
+			return intervals[i][1] > intervals[j][1]
+		}
+
+		return intervals[i][0] < intervals[j][0]
+	})
 
 }
 
