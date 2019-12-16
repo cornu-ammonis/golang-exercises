@@ -10,27 +10,6 @@ func remove(slice [][]int, s int) [][]int {
 	return append(slice[:s], slice[s+1:]...)
 }
 
-func searchForStart(intervals [][]int, interval []int) int {
-	target := interval[0]
-
-	L := 0
-	R := len(interval) - 1
-	var m int
-	for L <= R {
-		m = (L + R) / 2
-
-		if intervals[m][0] < target {
-			L = m + 1
-		} else if target < intervals[m][0] {
-			R = m - 1
-		} else {
-			return m
-		}
-	}
-
-	return m
-}
-
 // tests whether potential covers target
 func covers(target []int, potential []int) bool {
 	return potential[0] <= target[0] && target[1] <= potential[1]
@@ -45,39 +24,6 @@ func removeCoveredIntervals(intervals [][]int) int {
 	// sort the slice based on first element for now
 	sort.Slice(intervals, func(i, j int) bool { return intervals[i][0] < intervals[j][0] })
 
-	i := 0
-	removedCount := 0
-	for i < len(intervals) {
-		interval := intervals[i]
-		candidateIndex := searchForStart(intervals, interval)
-		removed := false
-
-		for candidateIndex >= 0 {
-
-			// an interval cannot cover itself
-			if candidateIndex == i {
-				candidateIndex--
-				continue
-			}
-
-			if covers(interval, intervals[candidateIndex]) {
-				intervals = remove(intervals, i)
-				removed = true
-				removedCount++
-				break
-			}
-
-			candidateIndex--
-		}
-
-		if !removed {
-			i = i + 1
-		}
-
-	}
-	fmt.Println(intervals)
-
-	return removedCount
 }
 
 func main() {
