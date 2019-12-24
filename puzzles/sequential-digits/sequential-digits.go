@@ -25,6 +25,29 @@ func numDigits(n int) int {
 // An integer has sequential digits if and only if each digit in the number is one more than the previous digit.
 // Return a sorted list of all the integers in the range [low, high] inclusive that have sequential digits.
 func sequentialDigits(low int, high int) []int {
+	var startingDigit int = leftmostDigit(low)
+	var startingE int = numDigits(low)
+	var maxE int = numDigits(high)
+
+	var result []int = make([]int, 0)
+
+	E := startingE
+	leftDigit := startingDigit
+	for E <= maxE {
+		for leftDigit < 10 {
+			var sequentialNumber int = getSequentialNumber(leftDigit, E)
+
+			if low <= sequentialNumber && sequentialNumber <= high {
+				result = append(result, sequentialNumber)
+			}
+
+			leftDigit = leftDigit + 1
+		}
+
+		E = E + 1
+		leftDigit = 1
+	}
+
 	return []int{}
 }
 
