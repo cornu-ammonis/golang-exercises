@@ -41,7 +41,7 @@ func validSequentialNumberConstraints(leftDigit int, E int) bool {
 // Return a sorted list of all the integers in the range [low, high] inclusive that have sequential digits.
 func sequentialDigits(low int, high int) []int {
 	var startingDigit int = leftmostDigit(low)
-	var startingE int = numDigits(low)
+	var startingE int = numDigits(low) - 1 // e.g. if low is in range 10 - 99, E is 1
 	var maxE int = numDigits(high)
 
 	var result []int = make([]int, 0)
@@ -85,4 +85,6 @@ func main() {
 
 	fmt.Println(validSequentialNumberConstraints(7, 2)) // expects true
 	fmt.Println(validSequentialNumberConstraints(8, 2)) // expects false
+
+	fmt.Println(sequentialDigits(100, 300)) // expects [123, 234]
 }
