@@ -50,10 +50,14 @@ func sequentialDigits(low int, high int) []int {
 	leftDigit := startingDigit
 	for E <= maxE {
 		for leftDigit < 10 {
-			var sequentialNumber int = getSequentialNumber(leftDigit, E)
 
-			if low <= sequentialNumber && sequentialNumber <= high {
-				result = append(result, sequentialNumber)
+			if validSequentialNumberConstraints(leftDigit, E) {
+				var sequentialNumber int = getSequentialNumber(leftDigit, E)
+
+				if low <= sequentialNumber && sequentialNumber <= high {
+					result = append(result, sequentialNumber)
+				}
+
 			}
 
 			leftDigit = leftDigit + 1
