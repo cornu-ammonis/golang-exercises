@@ -48,7 +48,7 @@ func sequentialDigits(low int, high int) []int {
 		leftDigit = 1
 	}
 
-	return []int{}
+	return result
 }
 
 func main() {
