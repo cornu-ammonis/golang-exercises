@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 )
 
 func leftmostDigit(n int) int {
@@ -19,6 +20,17 @@ func numDigits(n int) int {
 		count = count + 1
 	}
 	return count
+}
+
+func getSequentialNumber(leftDigit int, E int) int {
+	// TODO: handle impossible constraints for creating sequential number
+
+	if leftDigit > 9 || E < 0 {
+		return 0
+	}
+
+	var n int = leftDigit * int(math.Pow(10, float64(E)))
+	return n + getSequentialNumber(leftDigit+1, E-1)
 }
 
 // https://leetcode.com/problems/sequential-digits/
@@ -59,4 +71,7 @@ func main() {
 	fmt.Println(numDigits(12345))
 	fmt.Println(numDigits(10))
 	fmt.Println(numDigits(11))
+
+	fmt.Println(getSequentialNumber(1, 2)) // expects 123
+	fmt.Println(getSequentialNumber(2, 4)) // expects 23456
 }
