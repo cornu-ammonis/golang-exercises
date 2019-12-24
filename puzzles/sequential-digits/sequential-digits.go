@@ -22,15 +22,18 @@ func numDigits(n int) int {
 	return count
 }
 
+// assumes leftDigit and E are valid constraints for producing a sequential number, per validSequentialNumberConstraints
 func getSequentialNumber(leftDigit int, E int) int {
-	// TODO: handle impossible constraints for creating sequential number
-
 	if leftDigit > 9 || E < 0 {
 		return 0
 	}
 
 	var n int = leftDigit * int(math.Pow(10, float64(E)))
 	return n + getSequentialNumber(leftDigit+1, E-1)
+}
+
+func validSequentialNumberConstraints(leftDigit int, E int) bool {
+	return leftDigit+E <= 9
 }
 
 // https://leetcode.com/problems/sequential-digits/
@@ -74,4 +77,8 @@ func main() {
 
 	fmt.Println(getSequentialNumber(1, 2)) // expects 123
 	fmt.Println(getSequentialNumber(2, 4)) // expects 23456
+	fmt.Println(getSequentialNumber(7, 2)) // expects 789
+
+	fmt.Println(validSequentialNumberConstraints(7, 2)) // expects true
+	fmt.Println(validSequentialNumberConstraints(8, 2)) // expects false
 }
