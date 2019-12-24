@@ -86,5 +86,6 @@ func main() {
 	fmt.Println(validSequentialNumberConstraints(7, 2)) // expects true
 	fmt.Println(validSequentialNumberConstraints(8, 2)) // expects false
 
-	fmt.Println(sequentialDigits(100, 300)) // expects [123, 234]
+	fmt.Println(sequentialDigits(100, 300))    // expects [123, 234]
+	fmt.Println(sequentialDigits(1000, 13000)) // expects [1234,2345,3456,4567,5678,6789,12345]
 }
