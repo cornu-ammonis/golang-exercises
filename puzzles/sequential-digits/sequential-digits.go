@@ -42,7 +42,7 @@ func validSequentialNumberConstraints(leftDigit int, E int) bool {
 func sequentialDigits(low int, high int) []int {
 	var startingDigit int = leftmostDigit(low)
 	var startingE int = numDigits(low) - 1 // e.g. if low is in range 10 - 99, E is 1
-	var maxE int = numDigits(high)
+	var maxE int = numDigits(high) - 1
 
 	var result []int = make([]int, 0)
 
