@@ -20,3 +20,14 @@ func (s ByteStack) ToString() string {
 
 	return str
 }
+
+type IntStack []int
+
+func (s IntStack) Push(n int) IntStack {
+	return append(s, n)
+}
+
+func (s IntStack) Pop() (IntStack, int) {
+	l := len(s)
+	return s[:l-1], s[l-1]
+}
