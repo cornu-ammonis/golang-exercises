@@ -59,24 +59,23 @@ func makeConnected(n int, connections [][]int) int {
 		for vrtx := 0; vrtx < n; vrtx++ {
 			if matrix[i][vrtx] && !seenVertex[vrtx] {
 				stk = stk.Push(vrtx)
+				seenVertex[vrtx] = true
+				seenVertexCount++
 			}
 		}
 
 		var stackCounter int = len(stk)
+		var vrtx int = -1
 		for stackCounter > 0 {
-			stk, vrtx := stk.Pop()
+			stk, vrtx = stk.Pop()
 			stackCounter--
-			if seenVertex[vrtx] {
-				continue
-			}
-
-			seenVertex[vrtx] = true
-			seenVertexCount++
 
 			for v := 0; v < n; v++ {
 				if matrix[vrtx][v] && !seenVertex[v] {
 					stk = stk.Push(v)
 					stackCounter++
+					seenVertex[vrtx] = true
+					seenVertexCount++
 				}
 			}
 		}
