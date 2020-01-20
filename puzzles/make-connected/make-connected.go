@@ -18,7 +18,9 @@ func buildAdjacencyMatrix(connections [][]int, n int) [][]bool {
 	var matrix [][]bool = makeDynamic2DArray(n)
 
 	for _, val := range connections {
+		// assumes undirected graph, so the matrix is strictly symmetric
 		matrix[val[0]][val[1]] = true
+		matrix[val[1]][val[0]] = true
 	}
 
 	return matrix
