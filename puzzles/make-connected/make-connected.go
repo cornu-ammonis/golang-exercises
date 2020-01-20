@@ -70,8 +70,6 @@ func makeConnected(n int, connections [][]int) int {
 				continue
 			}
 
-			fmt.Println("here")
-
 			seenVertex[vrtx] = true
 			seenVertexCount++
 
@@ -84,7 +82,6 @@ func makeConnected(n int, connections [][]int) int {
 		}
 
 		i++
-		fmt.Println("end")
 
 	}
 
@@ -101,4 +98,10 @@ func main() {
 
 	test2 := [][]int{{0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}}
 	fmt.Println(makeConnected(6, test2)) // expect 2
+
+	test3 := [][]int{{0, 1}, {0, 2}, {0, 3}, {1, 2}}
+	fmt.Println(makeConnected(6, test3)) // expect -1
+
+	test4 := [][]int{{0, 1}, {0, 2}, {3, 4}, {2, 3}}
+	fmt.Println(makeConnected(5, test4)) // expect 0
 }
