@@ -4,18 +4,22 @@ import (
 	"fmt"
 )
 
-func makeDynamic2DArray(n int) [][]int {
-	matrix := make([][]int, n)
+func makeDynamic2DArray(n int) [][]bool {
+	matrix := make([][]bool, n)
 
 	for i := 0; i < n; i++ {
-		matrix[i] = make([]int, n)
+		matrix[i] = make([]bool, n)
 	}
 
 	return matrix
 }
 
-func buildAdjacencyMatrix(connections [][]int, n int) [][]int {
-	var matrix [][]int = makeDynamic2DArray(n)
+func buildAdjacencyMatrix(connections [][]int, n int) [][]bool {
+	var matrix [][]bool = makeDynamic2DArray(n)
+
+	for _, val := range connections {
+
+	}
 
 }
 
