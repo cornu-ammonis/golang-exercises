@@ -30,6 +30,11 @@ func buildAdjacencyMatrix(connections [][]int, n int) [][]bool {
 
 // https://leetcode.com/problems/number-of-operations-to-make-network-connected/
 func makeConnected(n int, connections [][]int) int {
+
+	if len(connections) < n-1 {
+		return -1
+	}
+
 	var matrix [][]bool = buildAdjacencyMatrix(connections, n)
 
 	var seenVertex []bool = make([]bool, n)
@@ -83,7 +88,7 @@ func makeConnected(n int, connections [][]int) int {
 
 	}
 
-	return components
+	return components - 1
 }
 
 func main() {
@@ -92,5 +97,8 @@ func main() {
 	test1 := [][]int{{0, 1}, {0, 2}, {1, 2}}
 	testMatrix := buildAdjacencyMatrix(test1, 4)
 	fmt.Println(testMatrix)
-	fmt.Println(makeConnected(4, test1))
+	fmt.Println(makeConnected(4, test1)) // expect 1
+
+	test2 := [][]int{{0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}}
+	fmt.Println(makeConnected(6, test2)) // expect 2
 }
