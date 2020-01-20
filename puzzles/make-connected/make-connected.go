@@ -75,7 +75,7 @@ func makeConnected(n int, connections [][]int) int {
 				if matrix[vrtx][v] == true && !seenVertex[v] {
 					stk = stk.Push(v)
 					stackCounter++
-					seenVertex[vrtx] = true
+					seenVertex[v] = true
 					seenVertexCount++
 					fmt.Println("i, seenvertexcount")
 					fmt.Println(i)
