@@ -18,9 +18,10 @@ func buildAdjacencyMatrix(connections [][]int, n int) [][]bool {
 	var matrix [][]bool = makeDynamic2DArray(n)
 
 	for _, val := range connections {
-
+		matrix[val[0]][val[1]] = true
 	}
 
+	return matrix
 }
 
 // https://leetcode.com/problems/number-of-operations-to-make-network-connected/
@@ -30,4 +31,8 @@ func makeConnected(n int, connections [][]int) int {
 
 func main() {
 	fmt.Println("hello")
+
+	test1 := [][]int{{0, 1}, {0, 2}, {1, 2}}
+	testMatrix := buildAdjacencyMatrix(test1, 4)
+	fmt.Println(testMatrix)
 }
