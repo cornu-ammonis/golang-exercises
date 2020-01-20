@@ -43,6 +43,7 @@ func makeConnected(n int, connections [][]int) int {
 	var components int = 0
 	var i int = 0
 	stk := make(stack.IntStack, 0)
+	fmt.Println(matrix)
 
 	for seenVertexCount < n {
 		// skip starting DFS from vertices we've already seen
@@ -66,16 +67,19 @@ func makeConnected(n int, connections [][]int) int {
 
 		var stackCounter int = len(stk)
 		var vrtx int = -1
-		for stackCounter > 0 {
+		for len(stk) > 0 {
 			stk, vrtx = stk.Pop()
 			stackCounter--
 
 			for v := 0; v < n; v++ {
-				if matrix[vrtx][v] && !seenVertex[v] {
+				if matrix[vrtx][v] == true && !seenVertex[v] {
 					stk = stk.Push(v)
 					stackCounter++
 					seenVertex[vrtx] = true
 					seenVertexCount++
+					fmt.Println("i, seenvertexcount")
+					fmt.Println(i)
+					fmt.Println(seenVertexCount)
 				}
 			}
 		}
