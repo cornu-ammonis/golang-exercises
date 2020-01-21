@@ -28,7 +28,7 @@ func buildAdjacencyMatrix(connections [][]int, n int) [][]bool {
 	return matrix
 }
 
-func markAllConnectedAsSeen(currentVertex int, matrix [][]bool, seenVertex []bool, seenVertexCount *int) []bool {
+func markAllConnectedAsSeen(currentVertex int, matrix [][]bool, seenVertex []bool, seenVertexCount int) ([]bool, int) {
 	stk := make(stack.IntStack, 0)
 	var n int = len(matrix)
 
@@ -36,7 +36,7 @@ func markAllConnectedAsSeen(currentVertex int, matrix [][]bool, seenVertex []boo
 		if matrix[currentVertex][vrtx] && !seenVertex[vrtx] {
 			stk = stk.Push(vrtx)
 			seenVertex[vrtx] = true
-			*seenVertexCount++
+			seenVertexCount++
 		}
 	}
 
@@ -51,12 +51,12 @@ func markAllConnectedAsSeen(currentVertex int, matrix [][]bool, seenVertex []boo
 				stk = stk.Push(v)
 				stackCounter++
 				seenVertex[v] = true
-				*seenVertexCount++
+				seenVertexCount++
 			}
 		}
 	}
 
-	return seenVertex
+	return seenVertex, seenVertexCount
 }
 
 // https://leetcode.com/problems/number-of-operations-to-make-network-connected/
@@ -86,7 +86,7 @@ func makeConnected(n int, connections [][]int) int {
 		seenVertexCount++ // we are at the vertex i so make sure to record it
 		seenVertex[i] = true
 
-		markAllConnectedAsSeen(i, matrix, seenVertex, &seenVertexCount)
+		seenVertex, seenVertexCount = markAllConnectedAsSeen(i, matrix, seenVertex, seenVertexCount)
 
 		i++
 
